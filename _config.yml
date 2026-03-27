@@ -23,7 +23,7 @@ repository               : "bitrue-x/bitrue-x.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "bitrue.png"
   name             : "Bit Intelligence & Truth Exploration（BiTrue）"
   pronouns         : # example: "she/her"  
   bio              : "以数据为基、以智能为器、以真理为向，探索数据背后的规律与真相。"

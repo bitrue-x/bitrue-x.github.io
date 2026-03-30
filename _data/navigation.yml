@@ -17,8 +17,8 @@ main:
   - title: "Teaching"
     url: /teaching/    
     
-  #- title: "Members"
-  #  url: /portfolio/
+  - title: "Members"
+    url: /portfolio/
         
   - title: "Blog Posts"
     url: /year-archive/

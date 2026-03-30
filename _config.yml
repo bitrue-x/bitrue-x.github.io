@@ -93,16 +93,24 @@ publication_category:
         title: 'Nature'
       o:
         title: '中科院一区'
+      a:
+        title: 'CCF-A'
+      t:
+        title: '中科院二区'
+      b:
+        title: 'CCF-B'
       c:
-        title: ''
+        title: 'CCF-C'
       
   conferences:
     title: 'Conference Papers'
     subcategories:
       a:
         title: 'CCF-A'
+      b:
+        title: 'CCF-B'
       c:
-        title: ''
+        title: 'CCF-C'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews

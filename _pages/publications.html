@@ -12,67 +12,78 @@ author_profile: true
 {% include base_path %}
 
 {% if site.publication_category %}
-  {% assign all_categories = "" | split: "" %}
   {% for category in site.publication_category %}
-    {% assign all_categories = all_categories | push: category[0] %}
-    {% if category[1].subcategories %}
-      {% for sub in category[1].subcategories %}
-        {% assign sub_key = category[0] | append: ":" | append: sub[0] %}
-        {% assign all_categories = all_categories | push: sub_key %}
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
-
-  {% for cat_key in all_categories %}
     {% assign title_shown = false %}
-    {% assign parent_key = cat_key | split: ":" | first %}
-    {% assign sub_key = cat_key | split: ":" | last %}
-    
-    {% assign display_title = site.publication_category[parent_key].title %}
-    {% if cat_key != parent_key %}
-      {% assign sub_title = site.publication_category[parent_key].subcategories[sub_key].title %}
-      {% assign display_title = sub_title %}
-    {% endif %}
+    {% assign main_cat_key = category[0] %}
+    {% assign main_cat_title = category[1].title %}
+    {% assign subcats = category[1].subcategories %}
 
-    {% assign sorted_posts = "" | split: "" %}
+    <!-- 1. 渲染主分类标题 (只有当该分类下有文章时才显示标题) -->
+    {% assign has_posts_in_main = false %}
+    {% assign has_posts_in_sub = false %}
+
+    <!-- 预检查：看看主分类下有没有文章 -->
     {% for post in site.publications reversed %}
-      {% assign show_post = false %}
-      
-      {% if post.category == parent_key %}
-        {% if cat_key == parent_key %}
-          {% assign show_post = true %} 
-        {% elsif post.sub_category == sub_key %}
-          {% assign show_post = true %} 
+      {% if post.category == main_cat_key %}
+        {% if post.sub_category == nil or post.sub_category == "" %}
+          {% assign has_posts_in_main = true %}
+        {% else %}
+          {% assign has_posts_in_sub = true %}
         {% endif %}
-      {% endif %}
-
-      {% if show_post %}
-        {% assign sort_prefix = "1_" %}
-        {% if cat_key != parent_key and post.sub_category == sub_key %}
-           {% assign sort_prefix = "0_" %}
-        {% endif %}
-
-        {% assign sort_key = sort_prefix | append: post.title %}
-
-        {% assign post_with_key = post | default: "" | split: "," %}
-        {% assign post_with_key = post_with_key | push: sort_key %}
-        {% assign item = sort_key | append: "|||" | append: post.url %}
-        {% assign sorted_posts = sorted_posts | push: item %}
       {% endif %}
     {% endfor %}
 
-    {% assign sorted_posts = sorted_posts | sort %}
+    {% if has_posts_in_main or has_posts_in_sub %}
+      <!-- 只有有文章才显示主标题 -->
+      <h2>{{ main_cat_title }}</h2>
+      <hr />
+    {% endif %}
 
-    {% if sorted_posts.size > 0 %}
-      <h2>{{ display_title }}</h2><hr />
-      {% for item in sorted_posts %}
-        {% assign post_url = item | split: "|||" | last %}
-        {% assign current_post = site.publications | where: "url", post_url | first %}
+    <!-- 2. 渲染子分类下的文章 (有划分的排在前面) -->
+    {% if subcats %}
+      {% for sub in subcats %}
+        {% assign sub_cat_key = sub[0] %}
+        {% assign sub_cat_title = sub[1].title %}
+
+        {% assign sub_posts = "" | split: "" %}
+        {% for post in site.publications reversed %}
+          {% if post.category == main_cat_key and post.sub_category == sub_cat_key %}
+            {% assign sub_posts = sub_posts | push: post %}
+          {% endif %}
+        {% endfor %}
+
+        {% if sub_posts.size > 0 %}
+          <!-- 子分类标题 -->
+          <h3>{{ sub_cat_title }}</h3>
+          <hr />
+
+          <!-- 渲染子分类文章 -->
+          {% for post in sub_posts %}
+            {% include archive-single.html %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    <!-- 3. 渲染主分类下无子分类的文章 (排在后面) -->
+    {% assign main_posts = "" | split: "" %}
+    {% for post in site.publications reversed %}
+      {% if post.category == main_cat_key and (post.sub_category == nil or post.sub_category == "") %}
+        {% assign main_posts = main_posts | push: post %}
+      {% endif %}
+    {% endfor %}
+
+    {% if main_posts.size > 0 %}
+      <!-- 这里可以加一个“其他”或者直接空着，或者加一个通用的 hr -->
+      <hr />
+
+      {% for post in main_posts %}
         {% include archive-single.html %}
       {% endfor %}
     {% endif %}
   {% endfor %}
 {% else %}
+  <!-- 默认情况 -->
   {% for post in site.publications reversed %}
     {% include archive-single.html %}
   {% endfor %}

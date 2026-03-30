@@ -89,15 +89,20 @@ publication_category:
   manuscripts:
     title: 'Journal Articles'
     subcategories:
-      N:
+      n:
         title: 'Nature'
-      O:
+      o:
         title: '中科院一区'
+      c:
+        title: ''
+      
   conferences:
     title: 'Conference Papers'
     subcategories:
-      A:
+      a:
         title: 'CCF-A'
+      c:
+        title: ''
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews

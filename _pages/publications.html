@@ -25,18 +25,13 @@ author_profile: true
 
   {% for cat_key in all_categories %}
     {% assign title_shown = false %}
-    
     {% assign parent_key = cat_key | split: ":" | first %}
     {% assign sub_key = cat_key | split: ":" | last %}
     
     {% assign display_title = site.publication_category[parent_key].title %}
     {% if cat_key != parent_key %}
       {% assign sub_title = site.publication_category[parent_key].subcategories[sub_key].title %}
-      {% if sub_title %}
-        {% assign display_title = sub_title %}
-      {% else %}
-        {% assign display_title = cat_key | replace: ":", " - " %}
-      {% endif %}
+      {% assign display_title = sub_title %}
     {% endif %}
 
     {% assign sorted_posts = "" | split: "" %}
@@ -44,36 +39,41 @@ author_profile: true
       {% assign show_post = false %}
       
       {% if post.category == parent_key %}
-        {% assign show_post = true %}
-      {% endif %}
-
-      {% if cat_key != parent_key %}
-        {% if post.category == parent_key and post.sub_category == sub_key %}
-          {% assign show_post = true %}
+        {% if cat_key == parent_key %}
+          {% assign show_post = true %} 
+        {% elsif post.sub_category == sub_key %}
+          {% assign show_post = true %} 
         {% endif %}
       {% endif %}
 
       {% if show_post %}
-        {% assign sorted_posts = sorted_posts | push: post %}
+        {% assign sort_prefix = "1_" %}
+        {% if cat_key != parent_key and post.sub_category == sub_key %}
+           {% assign sort_prefix = "0_" %}
+        {% endif %}
+
+        {% assign sort_key = sort_prefix | append: post.title %}
+
+        {% assign post_with_key = post | default: "" | split: "," %}
+        {% assign post_with_key = post_with_key | push: sort_key %}
+        {% assign item = sort_key | append: "|||" | append: post.url %}
+        {% assign sorted_posts = sorted_posts | push: item %}
       {% endif %}
     {% endfor %}
 
-    {% assign sorted_posts = sorted_posts | sort: "sub_category" | reverse %}
+    {% assign sorted_posts = sorted_posts | sort %}
 
     {% if sorted_posts.size > 0 %}
       <h2>{{ display_title }}</h2><hr />
-      {% for post in sorted_posts %}
+      {% for item in sorted_posts %}
+        {% assign post_url = item | split: "|||" | last %}
+        {% assign current_post = site.publications | where: "url", post_url | first %}
         {% include archive-single.html %}
       {% endfor %}
     {% endif %}
-
   {% endfor %}
-
 {% else %}
   {% for post in site.publications reversed %}
     {% include archive-single.html %}
   {% endfor %}
 {% endif %}
-
-
-

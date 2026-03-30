@@ -89,14 +89,14 @@ publication_category:
   manuscripts:
     title: 'Journal Articles'
     subcategories:
-      n:
+      N:
         title: 'Nature'
-      o:
+      O:
         title: '中科院一区'
   conferences:
     title: 'Conference Papers'
     subcategories:
-      a:
+      A:
         title: 'CCF-A'
 
 # Site Settings

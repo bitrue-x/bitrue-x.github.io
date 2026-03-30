@@ -1,14 +1,23 @@
 ---
 permalink: /
-title: "研究方向：分布式数据系统、可解释人工智能、大模型应用"
+title: "研究方向：可解释人工智能、智能软件、分布式数据系统"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-课题组四名老师，黄山、曾令斌、孙莹、张根。
+本团队是一支专注于人工智能前沿理论与技术创新的科研团队，长期深耕人工智能核心领域，研究方向围绕可解释人工智能、智能软件、分布式数据系统三大板块展开，致力于打造高效、可靠、可解释的新一代智能系统。
+团队科研实力雄厚，成果丰硕，已在Nature子刊、CCF A类期刊及顶级会议上发表多篇高质量学术论文，学术影响力与应用价值突出。团队项目经费充足，可以提供良好的物质条件保障。团队氛围友好融洽，各位指导老师为人和善、态度谦和，注重与成员的平等沟通，为科研工作的顺利开展营造了轻松务实、互帮互助的良好环境，助力团队成员在科研领域稳步深耕、持续突破。
 
+联系方式
+======
+**黄山**：[huangshan12@nudt.edu.cn]
+**曾令斌**: [zenglingbin16@nudt.edu.cn]
+**孙莹**: [sunying@nudt.edu.cn]
+**张根**: [zhanggen@nudt.edu.cn]
+
+<!--
 A data-driven personal website
 ======
 Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured Markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various Markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
@@ -52,3 +61,5 @@ Example: editing a Markdown file for a talk
 For more info
 ------
 More info about configuring Academic Pages can be found in [the guide](https://academicpages.github.io/markdown/), the [growing wiki](https://github.com/academicpages/academicpages.github.io/wiki), and you can always [ask a question on GitHub](https://github.com/academicpages/academicpages.github.io/discussions). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
+
+-->

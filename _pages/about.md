@@ -14,10 +14,6 @@ redirect_from:
 ======
 **黄山**：[huangshan12@nudt.edu.cn](huangshan12@nudt.edu.cn)
 **孙莹**: [sunying@nudt.edu.cn](sunying@nudt.edu.cn)
-
-**张根**: []()
-
-**曾令斌**: []()
 <!--
 A data-driven personal website
 ======

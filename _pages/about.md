@@ -13,9 +13,7 @@ redirect_from:
 联系方式
 ======
 **黄山**：[huangshan12@nudt.edu.cn](huangshan12@nudt.edu.cn)
-**曾令斌**: [zenglingbin16@nudt.edu.cn](zenglingbin16@nudt.edu.cn)
 **孙莹**: [sunying@nudt.edu.cn](sunying@nudt.edu.cn)
-**张根**: [zhanggen@nudt.edu.cn](zhanggen@nudt.edu.cn)
 
 <!--
 A data-driven personal website

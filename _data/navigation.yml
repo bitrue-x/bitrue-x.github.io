@@ -15,7 +15,7 @@ main:
     url: /talks/        
     
   - title: "Members"
-    #url: /portfolio/
+    url: /portfolio/
         
   - title: "Blog Posts"
     #url: /year-archive/

@@ -4,7 +4,6 @@ excerpt: "Dr. Ying Sun is currently an assistant professor at Artificial Intelli
 <br/>
 <br/>E-mail: sunyinggilly@gmail.com
 <br/>
-<br/><img src='/images/YingSun.jpg'>"
 collection: portfolio
 ---
 

@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "研究方向：可解释人工智能、智能软件、分布式数据系统"
+title: "研究方向：可信人工智能"
 author_profile: true
 redirect_from: 
   - /about/
